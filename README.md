@@ -94,7 +94,10 @@ function symfony($id)
         return;
     }
 
-    return $container->get($id);
+	$service = $container->get($id);
+	$service->setContainer($container);
+
+	return $service;
 }
 
 $loader = require_once __DIR__.'/symfony/app/bootstrap.php.cache';
